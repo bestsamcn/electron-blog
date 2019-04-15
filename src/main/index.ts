@@ -13,6 +13,7 @@ log.info('(main/index) app start');
 log.info(`(main/index) log file at ${log.transports.file.file}`);
 
 if (is.dev()) {
+    console.log('dev')
     require('electron-debug')(); // eslint-disable-line global-require
 }
 

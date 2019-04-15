@@ -4,11 +4,8 @@ const cwd = process.cwd();
 
 export default function (webpackConfig, { webpack }) {
 
-  for(let plugin of webpackConfig.plugins){
-    if(plugin instanceof webpack.ProgressPlugin){
-      webpackConfig.plugins.splice(webpackConfig.plugins.indexOf(plugin), 1);
-    }
-  }
+  //删除progress plugin
+  webpackConfig.plugins.splice(webpackConfig.plugins.length-1, 1);
   webpackConfig.entry = {
     main: './src/main/index.ts',
   };
