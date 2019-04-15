@@ -13,12 +13,11 @@ log.info('(main/index) app start');
 log.info(`(main/index) log file at ${log.transports.file.file}`);
 
 if (is.dev()) {
-    console.log('dev')
     require('electron-debug')(); // eslint-disable-line global-require
 }
 
 app.on('ready', () => {
-    log.info('(main/index) app ready');
+    log.info('(main/index) app s');
     application.init();
     menu.init();
 

@@ -135,14 +135,21 @@ function getPath() {
 
   return path;
 }
+// EXTERNAL MODULE: external "require(\"electron-connect\")"
+var external__require___electron_connect____ = __webpack_require__("RIVe");
+var external__require___electron_connect_____default = /*#__PURE__*/__webpack_require__.n(external__require___electron_connect____);
+
 // CONCATENATED MODULE: ./src/main/services/application.ts
+
 
 function init() {
   var win = create({
     width: 800,
     height: 600
   });
-  win.loadURL(getPath());
+  win.loadURL(getPath()); // Connect to server process
+
+  external__require___electron_connect____["client"].create(win);
 }
 // CONCATENATED MODULE: ./src/main/services/menu.ts
 
@@ -228,14 +235,12 @@ external__require___electron_log_____default.a.info('(main/index) app start');
 external__require___electron_log_____default.a.info("(main/index) log file at ".concat(external__require___electron_log_____default.a.transports.file.file));
 
 if (external__require___electron_is_____default.a.dev()) {
-  console.log('dev');
-
   __webpack_require__("WUjU")(); // eslint-disable-line global-require
 
 }
 
 external__require___electron____["app"].on('ready', function () {
-  external__require___electron_log_____default.a.info('(main/index) app ready');
+  external__require___electron_log_____default.a.info('(main/index) app s');
   init();
   menu_init(); // 加载 devtools extension
 
@@ -277,6 +282,13 @@ module.exports = require("electron");
 /***/ (function(module, exports) {
 
 module.exports = require("electron-log");
+
+/***/ }),
+
+/***/ "RIVe":
+/***/ (function(module, exports) {
+
+module.exports = require("electron-connect");
 
 /***/ }),
 

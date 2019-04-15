@@ -3,7 +3,7 @@ import styles from './index.css';
 import { formatMessage } from 'umi-plugin-locale';
 
 export default function() {
-  const a:string = 'dfsdfasdfsadfasdf';
+  const a:string = 's';
   return (
     <div className={styles.normal}>
       <div className={styles.welcome} />
