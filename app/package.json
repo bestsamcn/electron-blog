@@ -1,11 +1,10 @@
 {
-  "name": "umi-example-electron",
+  "name": "electron-blog",
   "version": "1.0.0",
   "description": "Yet another boilerplate for umi+dva+electron.",
   "main": "dist/main/main.js",
   "author": {
-    "name": "chencheng",
-    "email": "sorrycc@gmail.com"
+    "name": "huangzhensheng"
   },
   "dependencies": {
     "electron-config": "^1.0.0",

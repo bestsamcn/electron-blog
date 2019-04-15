@@ -5,6 +5,7 @@ const config: IConfig =  {
   // publicPath: './static/',
   outputPath: '../../app/dist/renderer',
   treeShaking: true,
+  history: 'hash',
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
