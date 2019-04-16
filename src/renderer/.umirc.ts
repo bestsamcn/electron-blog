@@ -1,13 +1,14 @@
 import { IConfig } from 'umi-types';
 
-// ref: https://umijs.org/config/
 const config: IConfig =  {
-  // publicPath: './static/',
+  disableDynamicImport:true,
+
+  //electron使用相对路径
+  publicPath:'./',
   outputPath: '../../app/dist/renderer',
   treeShaking: true,
   history: 'hash',
   plugins: [
-    // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
       antd: true,
       dva: true,

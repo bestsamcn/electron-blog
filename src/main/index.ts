@@ -20,7 +20,7 @@ if (is.dev()) {
     require('electron-reload')(process.cwd()+'/app', { electron: path.join(process.cwd(), 'node_modules', '.bin', 'electron.cmd') }); // eslint-disable-line global-require
 }
 app.on('ready', () => {
-    log.info('(main/index)   asdfasdf');
+    log.info('(main/index)   f');
     application.init();
     menu.init();
 });

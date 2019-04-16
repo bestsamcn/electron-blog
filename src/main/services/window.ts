@@ -11,6 +11,7 @@ export function create(opts) {
     count -= 1;
     win = null;
   });
+  win.webContents.openDevTools({mode:'right'});
   return win;
 }
 
