@@ -27,5 +27,5 @@ export function getPath() {
 }
 
 export function test(){
-  return 'fffffffffffffffff'
+  return 'test'
 }
