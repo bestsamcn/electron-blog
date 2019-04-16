@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name":"electron-blog",
+  "name": "electron-blog",
   "scripts": {
     "start:umi": "set APP_ROOT=src/renderer&&umi dev",
     "build:umi": "set APP_ROOT=src/renderer&& umi build",
@@ -34,7 +34,7 @@
     "appId": "me.bestsamcn",
     "asar": false
   },
-  "main":"main.js",
+  "main": "main.js",
   "devDependencies": {
     "@types/jest": "^23.3.12",
     "@types/react": "^16.7.18",
@@ -42,9 +42,10 @@
     "@types/react-test-renderer": "^16.0.3",
     "babel-eslint": "^9.0.0",
     "concurrently": "^4.1.0",
+    "electron-builder": "^20.39.0",
+    "electron-prebuilt": "^1.4.13",
     "electron-rebuild": "^1.8.4",
     "electron-reload": "^1.4.0",
-    "electron-builder":"^20.39.0",
     "eslint": "^5.4.0",
     "eslint-config-umi": "^1.4.0",
     "eslint-plugin-flowtype": "^2.50.0",
