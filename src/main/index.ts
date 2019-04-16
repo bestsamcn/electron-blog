@@ -12,15 +12,14 @@ import path from 'path';
 
 log.transports.file.level = 'info';
 
-log.info('(main/index) app start');
-log.info(`(main/index) log file at ${log.transports.file.file}`);
-
 if (is.dev()) {
     require('electron-debug')(); // eslint-disable-line global-require
+
+    //自动刷新主线程
     require('electron-reload')(process.cwd()+'/app', { electron: path.join(process.cwd(), 'node_modules', '.bin', 'electron.cmd') }); // eslint-disable-line global-require
 }
 app.on('ready', () => {
-    log.info('(main/index)   f');
+    log.info('(main ready');
     application.init();
     menu.init();
 });
@@ -38,8 +37,7 @@ app.on('activate', () => {
 });
 
 app.on('quit', () => {
-    log.info('(main/index) app quitt');
-    log.info('(main/index) <<<<<<<<<<<<<<<<<<<');
+    log.info('main quit');
 });
 
 // Register to global, so renderer can access these with remote.getGlobal

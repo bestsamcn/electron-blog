@@ -11,7 +11,9 @@ export function create(opts) {
     count -= 1;
     win = null;
   });
-  win.webContents.openDevTools({mode:'right'});
+
+  //强制开启调试模式
+  // win.webContents.openDevTools({mode:'right'});
   return win;
 }
 

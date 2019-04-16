@@ -1,5 +1,5 @@
 # electron-blog
-Electron-blog
+Electron-blog是利用electron, umi, dva, typescript等技术开发的桌面端项目
 
 
 ### 环境
@@ -19,3 +19,6 @@ npm install electron -g
 	```
 	npm run start:electron
 	```
+
+### 最后
+初始化时可能会出现某些模块无法引用的情况，重新安装即可
