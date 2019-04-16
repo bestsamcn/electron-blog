@@ -41,16 +41,18 @@ const config: IConfig =  {
       'child_process'
     ];
 
-    //require not defined
-    // if (load.includes(request)) {
-    //   isExternal = `require("${request}")`;
-    // }
-    // const appDeps = Object.keys(require('../../app/package').dependencies);
-    // if (appDeps.includes(request)) {
-    //   const orininalPath = slash(join(__dirname, '../../app/node_modules', request));
-    //   const requireAbsolute = `require('${orininalPath}')`;
-    //   isExternal = isDev ? requireAbsolute : `require('${request}')`;
-    // }
+    //浏览器预览会报错require not defined
+    if (load.includes(request)) {
+      isExternal = `require("${request}")`;
+    }
+
+    //移除electron相关依赖到主线程中的dependencies
+    const appDeps = Object.keys(require('../../app/package').dependencies);
+    if (appDeps.includes(request)) {
+      const orininalPath = slash(join(__dirname, '../../app/node_modules', request));
+      const requireAbsolute = `require('${orininalPath}')`;
+      isExternal = isDev ? requireAbsolute : `require('${request}')`;
+    }
     callback(null, isExternal);
   },
 }

@@ -25,3 +25,7 @@ export function getPath() {
   }
   return path;
 }
+
+export function test(){
+  return 'fffffffffffffffff'
+}

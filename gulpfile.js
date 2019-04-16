@@ -1,10 +1,16 @@
-var gulp = require('gulp');
-var electron = require('electron-connect').server.create();
-
+const gulp = require('gulp');
+const { server, client } = require('electron-connect');
+const electron = server.create();
+let isStarted = false;
 gulp.task('watch:electron', function () {
-  	electron.start();
+
   	gulp.watch(['src/main/*.ts'], e=>{
-  		console.log('electron reload')
+  		console.log(app, 'dddddddd')
+  		if(!isStarted && electron.numClients != 0){
+  			
+  			isStarted = true;
+  		}
+
   		electron.reload();
   	});
 });

@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import electron, { app, BrowserWindow } from 'electron';
 import { join } from 'path';
 import is from 'electron-is';
 import log from 'electron-log';
@@ -6,6 +6,9 @@ import * as application from './services/application';
 import * as window from './services/window';
 import * as menu from './services/menu';
 import * as config from './configs/config';
+import path from 'path';
+
+
 
 log.transports.file.level = 'info';
 
@@ -14,15 +17,12 @@ log.info(`(main/index) log file at ${log.transports.file.file}`);
 
 if (is.dev()) {
     require('electron-debug')(); // eslint-disable-line global-require
+    require('electron-reload')(process.cwd()+'/app', { electron: path.join(process.cwd(), 'node_modules', '.bin', 'electron.cmd') }); // eslint-disable-line global-require
 }
-
 app.on('ready', () => {
-    log.info('(main/index) app s');
+    log.info('(main/index)   asdfasdf');
     application.init();
     menu.init();
-
-    // 加载 devtools extension
-    if (is.dev()) {}
 });
 
 app.on('window-all-closed', () => {
@@ -38,7 +38,7 @@ app.on('activate', () => {
 });
 
 app.on('quit', () => {
-    log.info('(main/index) app quit');
+    log.info('(main/index) app quitt');
     log.info('(main/index) <<<<<<<<<<<<<<<<<<<');
 });
 
@@ -50,3 +50,5 @@ global.services = {
 global.configs = {
     config,
 };
+
+
