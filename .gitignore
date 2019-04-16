@@ -16,3 +16,11 @@
 # umi
 .umi
 .umi-production
+
+/dist
+/node_modules
+/app/dist
+/app/node_modules
+/app/package-lock.json
+/src/renderer/pages/.umi
+
