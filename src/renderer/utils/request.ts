@@ -1,15 +1,35 @@
 import Axios from 'axios';
-import * as config from './config.js';
-import MSG from './message.js';
+import * as config from '../config';
+import MessageEnum from './msg.js';
 Axios.defaults.baseURL = config.ROOT_API;
 Axios.defaults.timeout = 10000;
 Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-// Axios.defaults.headers.get['Content-Type'] = 'text/plain;charset=UTF-8';
 Axios.defaults.withCredentials = true;
-var _http = function(type, url, params, isToast){
+
+//请求方法类型
+export enum MethodType {
+    GET = 'get',
+    POST = 'post'
+}
+
+export class ResponseBody {
+    retCode:string;
+    data:any;
+    msg:string;
+}
+
+/**
+ * 请求工具
+ * @param {MethodType} type    
+ * @param {string}     url     
+ * @param {any}        params  
+ * @param {boolean}    isToast 
+ */
+const _http = (type:MethodType, url:string, params:any, isToast:boolean):Promise<ResponseBody>=>{
+    console.log(isToast, 'dddddd')
     type = type || 'get';
     if (!url) throw new Error('请指定url');
-    var obj = {};
+    const obj = {};
     params = Object.prototype.toString.call(params) === '[object Object]' ? params : {};
     if(type === 'get'){
         obj.method = 'get';
@@ -22,40 +42,40 @@ var _http = function(type, url, params, isToast){
     }else{
         throw new Error('请指定请求方式');
     }
-    var instance = Axios.create();
+    const instance = Axios.create();
     //当创建实例的时候，拦截器放在default无效
-    instance.interceptors.request.use(config=>{
+    instance.interceptors.request.use((config:any)=>{
         //不能使用null，否则会将token的值变成'null'
-        config.headers['x-access-token'] = store.getState().common.token || '';
-        store.dispatch(setLoading(true));
+        config.headers['x-access-token'] = '';
+        // store.dispatch(setLoading(true));
         return config;
     }, error=> {
-        store.dispatch(setLoading(false));
+        // store.dispatch(setLoading(false));
         // return Promise.reject(error);
     });
-    instance.interceptors.response.use(response=> {
-        store.dispatch(setLoading(false));
+    instance.interceptors.response.use((response:any)=> {
+        // store.dispatch(setLoading(false));
         return response;
     }, error=> {
-        store.dispatch(setLoading(false));
+        // store.dispatch(setLoading(false));
         return Promise.reject(error);
     });
 
-    var __promise = new Promise((resolve, reject)=>{
+    const __promise = new Promise((resolve:any, reject:any)=>{
         instance.request(obj).then(res=>{
             if(res.status == 200 && res.data.retCode !==0){
                 if(res.data.retCode === 10006 || res.data.retCode === 10003){
                     // store.dispatch('delToken');
                 }
                 console.log(res)
-                isToast && store.dispatch(setToast(res.data.msg || '异常'));
+                // isToast && store.dispatch(setToast(res.data.msg || '异常'));
                 return false;
             }
             return resolve(res.data);
         }, err=>{
-            isToast && store.dispatch(setToast('异常'));
+            // isToast && store.dispatch(setToast('异常'));
         }).catch(e=>{
-            isToast && store.dispatch(setToast('异常'));
+            // isToast && store.dispatch(setToast('异常'));
         });
     });
     return __promise;
