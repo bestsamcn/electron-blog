@@ -1,5 +1,7 @@
 import { IConfig } from 'umi-types';
 
+declare function join(a:any, b:any, c:any);
+declare function slash(a:any);
 const config: IConfig = {
     disableDynamicImport: true,
 
@@ -37,7 +39,7 @@ const config: IConfig = {
     ],
     externals(context, request, callback) {
         const isDev = process.env.NODE_ENV === 'development';
-        let isExternal = false;
+        let isExternal:boolean|string = false;
         const load = ['electron', 'fs', 'path', 'os', 'url', 'child_process'];
 
         //浏览器预览会报错require not defined

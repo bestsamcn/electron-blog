@@ -8,7 +8,12 @@ import * as menu from './services/menu';
 import * as config from './configs/config';
 import path from 'path';
 
-
+declare module NodeJS  {
+    interface Global {
+        services: any,
+        configs:any
+    }
+}
 
 log.transports.file.level = 'info';
 
@@ -40,8 +45,9 @@ app.on('quit', () => {
     log.info('main quit');
 });
 
+
 // Register to global, so renderer can access these with remote.getGlobal
-global.services = {
+global.services = { //ts
     application,
     window,
 };

@@ -11,5 +11,6 @@
     "electron-debug": "^2.2.0",
     "electron-is": "^2.4.1",
     "electron-log": "^2.2.14"
-  }
+  },
+  "devDependencies": {}
 }
