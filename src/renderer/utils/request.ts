@@ -32,7 +32,7 @@ interface HeaderObj {
  * @param {any}        params
  * @param {boolean}    isToast
  */
-const _http = (type: MethodType, url: string, params: any, isToast?: boolean): Promise<ResponseBody> => {
+const _http = (type: MethodType, url: string, params: any, isToast: boolean): Promise<ResponseBody> => {
 	type = type || MethodType.GET;
 	if (!url) throw new Error('请指定url');
 	const obj: HeaderObj = {

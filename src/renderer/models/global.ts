@@ -17,7 +17,7 @@ export default {
     effects: {
         *getCategoryList({ params }, { put, call }): void {
             console.log('asdfasdf');
-            let res:ResponseBody;
+            let res: ResponseBody;
             res = yield call(getCategoryList, {});
             console.log(res);
         },
