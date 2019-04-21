@@ -1,8 +1,18 @@
 import React from 'react';
-import styles from './index.css';
+import { Header } from '@/components/layouts';
+import { connect } from 'dva';
+import { GlobalModelState } from '@/models/global';
 
-const BasicLayout: React.FC = props => {
-    return props.children;
+@connect(({glboal}:any)=>({...global}))
+export default class BaseLayout extends React.Component<any> {
+	render(){
+		return (
+	    	<div>
+	    		<Header />
+	    		<div className="router-view">
+	                {this.props.children}
+	            </div>
+	    	</div>
+	    )
+	}
 };
-
-export default BasicLayout;
