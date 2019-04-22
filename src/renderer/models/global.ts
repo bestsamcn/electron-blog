@@ -42,6 +42,12 @@ export default {
             res = yield call(getCategoryList, {});
             console.log(res);
         },
+
+        //切换移动端菜单状态
+        *setToggleMenu({ params }:{params:any}, { put, call, select }:any){
+            let { iShowMenu } = yield select((state:any)=>state.global);
+            yield put({type:'setState', payload:{iShowMenu:!iShowMenu}});
+        }
     },
     reducers: {
         setState(state: GlobalModelState, { payload }:any): GlobalModelState {

@@ -1,3 +1,6 @@
+/**
+ * title: 首页
+ */
 import React from 'react';
 import { formatMessage } from 'umi-plugin-locale';
 import { remote } from 'electron';
