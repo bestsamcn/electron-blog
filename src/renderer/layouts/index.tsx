@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Footer, Menu } from '@/components/layouts';
+import { Header, Footer, Menu, Loading } from '@/components/layouts';
 import { connect } from 'dva';
 import { withRouter } from 'umi';
 import { GlobalModelState } from '@/models/global';
@@ -8,6 +8,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 interface IProps{
 	isLogin:boolean,
+	isLoading:boolean,
 	token:string,
 	msg:string,
 	iShowMenu:boolean,
@@ -42,12 +43,13 @@ export default class BaseLayout extends React.Component<IProps, any> {
         this.onresizeWindow();
     }
 	render(){
-		const { isLogin, token, msg, iShowMenu } = this.props;
+		const { isLogin, token, msg, iShowMenu, isLoading } = this.props;
 
 		const { isResizeToMobile, routerName } = this.state;
 		return (
 	    	<div>
 	    		<Header />
+	    		<Loading isLoading={isLoading} />
 	    		<ReactCSSTransitionGroup
                     transitionEnter={true}
                     transitionLeave={true}
