@@ -21,7 +21,10 @@ if (is.dev()) {
     require('electron-debug')(); // eslint-disable-line global-require
 
     //自动刷新主线程
-    require('electron-reload')(process.cwd()+'/app', { electron: path.join(process.cwd(), 'node_modules', '.bin', 'electron.cmd') }); // eslint-disable-line global-require
+    require('electron-reload')(process.cwd()+'/app', { 
+    	electron: path.join(process.cwd(), 'node_modules', '.bin', 'electron.cmd'),
+    	hardResetMethod: 'exit'
+    }); // eslint-disable-line global-require
 }
 app.on('ready', () => {
     log.info('(main ready');
