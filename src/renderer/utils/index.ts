@@ -13,14 +13,14 @@ export default class Tool {
     static isMobile = ():boolean=>{
         var b = false;
         var sUserAgent = navigator.userAgent.toLowerCase();
-        var bIsIpad = sUserAgent.match(/ipad/i)![0] =="ipad";
-        var bIsIphoneOs = sUserAgent.match(/iphone os/i)![0] == "iphone os";
-        var bIsMidp = sUserAgent.match(/midp/i)![0] == "midp";
-        var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i)![0] == "rv:1.2.3.4";
-        var bIsUc = sUserAgent.match(/ucweb/i)![0] == "ucweb";
-        var bIsAndroid = sUserAgent.match(/android/i)![0] == "android";
-        var bIsCE = sUserAgent.match(/windows ce/i)![0] == "windows ce";
-        var bIsWM = sUserAgent.match(/windows mobile/i)![0] == "windows mobile";
+        var bIsIpad = !!sUserAgent.match(/ipad/i) && sUserAgent.match(/ipad/i)![0]  =="ipad";
+        var bIsIphoneOs = sUserAgent.match(/iphone os/i) && sUserAgent.match(/iphone os/i)![0] == "iphone os";
+        var bIsMidp = sUserAgent.match(/midp/i) && sUserAgent.match(/midp/i)![0] == "midp";
+        var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) && sUserAgent.match(/rv:1.2.3.4/i)![0] == "rv:1.2.3.4";
+        var bIsUc = sUserAgent.match(/ucweb/i) && sUserAgent.match(/ucweb/i)![0] == "ucweb";
+        var bIsAndroid = sUserAgent.match(/android/i) && sUserAgent.match(/android/i)![0] == "android";
+        var bIsCE = sUserAgent.match(/windows ce/i) && sUserAgent.match(/windows ce/i)![0] == "windows ce";
+        var bIsWM = sUserAgent.match(/windows mobile/i) && sUserAgent.match(/windows mobile/i)![0] == "windows mobile";
         if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
             b = true;
         }

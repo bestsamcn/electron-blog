@@ -5,21 +5,28 @@ import { remote } from 'electron';
 import React from 'react';
 import { Footer } from '@/components/layouts';
 import ArticleList from '@/components/article/articlelist';
+import { Category } from '@/components/home';
+
 import $$ from '../utils';
 import { connect } from 'dva';
 import { router } from 'umi';
+import style from './style.less';
 
-@connect(({home}:any)=>({...home}))
-export default class Home extends React.Component<any> {
+interface IProps{
+	articleList:any[],
+    pageIndex:number,
+    pageSize:number,
+    isMore:boolean,
+    isMobile:boolean,
+    categoryArticleGroup:any[],
+    tagArticleGroup:any[],
+    dispatch:Function,
+    global:any
+}
+
+@connect(({home, global}:any)=>({...home, global}))
+export default class Home extends React.Component<IProps, {}> {
 	scrollBarRef:any;
-    readonly state = {
-        articleList:[],
-        pageIndex:1,
-        pageSize:5,
-        isMore:true,
-        categoryArticleGroup:[],
-        tagArticleGroup:[]
-    }
     scrollBar(){
         if(this.props.isMobile) return;
         var _body:any = document.body;
@@ -89,16 +96,22 @@ export default class Home extends React.Component<any> {
         this.scrollBar();
     }
     render(){
-    	let { isMore, isMobile, articleList } = this.props;
+    	let { isMore, articleList, categoryArticleGroup } = this.props;
+    	let { isMobile } = this.props.global;
+    	console.log(isMobile)
         return (
-            <div className="home">
-                <div className="main">
-                    <div className="wrapper">
-                        <div className="left-cont">
+            <div className={style["home"]}>
+                <div className={style["main"]}>
+                    <div className={style["wrapper"]}>
+                        <div className={style["left-cont"]}>
                             <ArticleList onLoadMore={this.getArticleList.bind(this, false)} isShowMore={true} isMobile={isMobile} isMore={isMore} articleList={articleList} />
                         </div>
-                        {!this.props.isMobile && <div className="right-bar sm-hide" ref={ref=>this.scrollBarRef=ref}>
-                            
+                        {!this.props.isMobile && <div className={`${style['right-bar']} sm-hide`} ref={ref=>this.scrollBarRef=ref}>
+                            <Category onCateClick={this.goArticleClick.bind(this)} categoryArticleGroup={categoryArticleGroup}>
+                                <div className="title color-black">
+                                    分类
+                                </div>
+                            </Category>
                         </div>}
                     </div>
                 </div>

@@ -1,8 +1,14 @@
 import { ResponseBody } from '@/utils/request';
 import { getArticleList, getDiffArticle } from '@/services';
 import $$ from '@/utils';
-console.log($$)
 
+/**
+ * 文章类型
+ */
+enum ArticleType{
+    CATEGORY = 1,
+    TAG = 2
+}
 export default {
 	namespace:'home',
     state: {
@@ -16,10 +22,13 @@ export default {
     subscriptions: {
         init({ dispatch, history }:any) {
             dispatch({type: 'getArticleList', params:{}});
+            dispatch({type: 'getDiffArticle', params:{type:ArticleType.CATEGORY}});
+            dispatch({type: 'getDiffArticle', params:{type:ArticleType.TAG}});
         },
     },
     effects: {
 
+        //文章列表
         *getArticleList({ params }:{params:any}, { put, call, select }:any) {
         	let { pageIndex, pageSize, articleList } = yield select((state:any)=>state.home);
         	let { isRefresh } = params;
@@ -46,11 +55,16 @@ export default {
             }
         },
 
-        //切换移动端菜单状态
-        *setToggleMenu({ params }:{params:any}, { put, call, select }:any){
-            let { iShowMenu } = yield select((state:any)=>state.global);
-            yield put({type:'setState', payload:{iShowMenu:!iShowMenu}});
+        //获取不同类型文章数据
+        *getDiffArticle({ params }:{params:any}, { put, call, select }:any) { 
+            let res = yield call(getDiffArticle, {type:params.type});
+            if(params.type == ArticleType.CATEGORY){
+                yield put({type:'setState', payload:{categoryArticleGroup:res.data}});
+            }else if(params.type == ArticleType.TAG){
+                yield put({type:'setState', payload:{tagArticleGroup:res.data}});
+            }
         }
+
     },
     reducers: {
         setState(state: any, { payload }:any){

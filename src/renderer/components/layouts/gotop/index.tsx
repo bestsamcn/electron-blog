@@ -9,7 +9,6 @@ export default class Gotop extends React.Component<any>{
 	//切换样式
 	backTop(){
 		var nScrollTop, nClientHeight = document.documentElement.clientHeight || document.body.clientHeight;
-		console.log(this.el, 'dddddddd')
 		var elClass=this.el!.className;
         this.el!.temp = ()=>{
         	nScrollTop = document.documentElement.scrollTop || document.body.scrollTop;

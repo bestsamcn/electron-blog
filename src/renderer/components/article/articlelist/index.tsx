@@ -4,7 +4,6 @@ import * as CONFIG from '@/config';
 import Helper from '@/utils/filter';
 import { router } from 'umi';
 import style from './style.less';
-console.log(style)
 
 interface IProps{
 	articleList:any[],

@@ -1,5 +1,6 @@
 import { ResponseBody } from '@/utils/request';
 import { getCategoryList } from '@/services';
+import $$ from '@/utils';
 
 export interface GlobalModelState {
     token: string,
@@ -34,13 +35,13 @@ export default {
     subscriptions: {
         init({ dispatch, history }:any) {
             dispatch({ type: 'getCategoryList', params: {} });
+            dispatch({ type: 'setMobile', params: {} });
         },
     },
     effects: {
-        *getCategoryList({ params }:{params:any}, { put, call }:any) {
-            let res: ResponseBody;
-            res = yield call(getCategoryList, {});
-            console.log(res);
+
+        *setMobile({ params }:{params:any}, { put, call }:any) {
+            yield put({type:'setState', payload:{isMobile:$$.isMobile()}})
         },
 
         //切换移动端菜单状态
