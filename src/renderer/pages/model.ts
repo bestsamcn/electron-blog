@@ -13,8 +13,8 @@ enum ArticleType{
 //排名类型
 enum RankType{
 	HOT = 1,
-	LATEST = 2,
-	READ = 3,
+	READ = 2,
+	LATEST = 3,
 	COMMENT = 4
 }
 export default {
