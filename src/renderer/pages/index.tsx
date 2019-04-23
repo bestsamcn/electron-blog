@@ -85,6 +85,7 @@ export default class Home extends React.Component<any> {
     getArticleList(){
     	let { isMore } = this.props;
     	if(!isMore) return;
+    	this.props.dispatch({type:'home/getArticleList', params:{isRefresh:false}});
         this.scrollBar();
     }
     render(){
