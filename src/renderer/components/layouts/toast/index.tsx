@@ -1,8 +1,8 @@
 import React from 'react';
-import '../../assets/css/common/toast.css';
+import style from './style.less';
 
 const Toast = ({msg}:{msg:string})=>(
-    <div className="animated toast">
+    <div className={`animated ${style.toast}`}>
         { msg }
     </div>
 )

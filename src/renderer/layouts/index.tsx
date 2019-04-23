@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Footer, Menu, Loading } from '@/components/layouts';
+import { Header, Footer, Menu, Loading, Toast, Gotop } from '@/components/layouts';
 import { connect } from 'dva';
 import { withRouter } from 'umi';
 import { GlobalModelState } from '@/models/global';
@@ -23,6 +23,8 @@ export default class BaseLayout extends React.Component<IProps, any> {
 		isResizeToMobile:false,
         routerName:''
 	}
+
+	//监听窗口调整
 	onresizeWindow(){
         var cw:number = document.documentElement.clientWidth || document.body.clientWidth;
         if(cw >= 768){
@@ -31,14 +33,17 @@ export default class BaseLayout extends React.Component<IProps, any> {
             this.setState({isResizeToMobile:true});
         }
     }
+
+    //设置路由名称
     setRouterName(name:string){
-    	console.log(name, 'ddd')
         this.setState({routerName:name});
     }
+
     componentWillReceiveProps(nextProps:any) {
     	let { route:{routes} } = nextProps;
         this.setRouterName(routes[0].title);
     }
+
     componentWillMount(){
         this.onresizeWindow();
     }
@@ -48,7 +53,17 @@ export default class BaseLayout extends React.Component<IProps, any> {
 		const { isResizeToMobile, routerName } = this.state;
 		return (
 	    	<div>
+	    		<Gotop />
 	    		<Header />
+	    		<ReactCSSTransitionGroup 
+	    			transitionName={{ enter:'fadeIn', leave:'fadeOut' }} 
+	    			transitionEnterTimeout={400} 
+	    			transitionLeaveTimeout={700}
+	    		>
+                    {
+                        !!msg && <Toast msg={msg} />
+                    }
+                </ReactCSSTransitionGroup>
 	    		<Loading isLoading={isLoading} />
 	    		<ReactCSSTransitionGroup
                     transitionEnter={true}
