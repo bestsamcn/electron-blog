@@ -5,7 +5,7 @@ import { remote } from 'electron';
 import React from 'react';
 import { Footer } from '@/components/layouts';
 import ArticleList from '@/components/article/articlelist';
-import { Category } from '@/components/home';
+import { Category, Rank, Tag } from '@/components/home';
 
 import $$ from '../utils';
 import { connect } from 'dva';
@@ -96,9 +96,8 @@ export default class Home extends React.Component<IProps, {}> {
         this.scrollBar();
     }
     render(){
-    	let { isMore, articleList, categoryArticleGroup } = this.props;
+    	let { isMore, articleList, categoryArticleGroup, tagArticleGroup } = this.props;
     	let { isMobile } = this.props.global;
-    	console.log(isMobile)
         return (
             <div className={style["home"]}>
                 <div className={style["main"]}>
@@ -112,6 +111,12 @@ export default class Home extends React.Component<IProps, {}> {
                                     分类
                                 </div>
                             </Category>
+                            <Rank />
+                            <Tag tagArticleGroup={tagArticleGroup} onTagClick={this.goArticleClick.bind(this)}>
+                                <div className="title color-black">
+                                    标签
+                                </div>
+                            </Tag>
                         </div>}
                     </div>
                 </div>

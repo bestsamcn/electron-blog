@@ -6,6 +6,8 @@ Axios.defaults.timeout = 10000;
 Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 Axios.defaults.withCredentials = true;
 
+const store = window.g_app._store;
+
 //请求方法类型
 export enum MethodType {
 	GET = 'get',
@@ -34,7 +36,7 @@ interface HeaderObj {
  * @param {any}        params
  * @param {boolean}    isToast
  */
-const _http = (type: MethodType, url: string, params: any, isToast: boolean): Promise<ResponseBody> => {
+const _http = (type: MethodType, url: string, params: any, isToast?: boolean): Promise<ResponseBody> => {
 	type = type || MethodType.GET;
 	if (!url) throw new Error('请指定url');
 	const obj: HeaderObj = {
@@ -60,21 +62,21 @@ const _http = (type: MethodType, url: string, params: any, isToast: boolean): Pr
 		(config: any) => {
 			//不能使用null，否则会将token的值变成'null'
 			config.headers['x-access-token'] = '';
-			// store.dispatch(setLoading(true));
+			store.dispatch({type:'global/setLoading', params:{isLoading:true}});
 			return config;
 		},
 		error => {
-			// store.dispatch(setLoading(false));
-			// return Promise.reject(error);
+			store.dispatch({type:'global/setLoading', params:{isLoading:false}});
+			return Promise.reject(error);
 		},
 	);
 	instance.interceptors.response.use(
 		(response: any) => {
-			// store.dispatch(setLoading(false));
+			store.dispatch({type:'global/setLoading', params:{isLoading:false}});
 			return response;
 		},
 		error => {
-			// store.dispatch(setLoading(false));
+			store.dispatch({type:'global/setLoading', params:{isLoading:false}});
 			return Promise.reject(error);
 		},
 	);
@@ -89,17 +91,17 @@ const _http = (type: MethodType, url: string, params: any, isToast: boolean): Pr
 							// store.dispatch('delToken');
 						}
 						console.log(res);
-						// isToast && store.dispatch(setToast(res.data.msg || '异常'));
+						isToast && store.dispatch({type:'global/setToast', params:{msg:'异常'}});
 						return false;
 					}
 					return resolve(res.data);
 				},
 				err => {
-					// isToast && store.dispatch(setToast('异常'));
+					isToast && store.dispatch({type:'global/setToast', params:{msg:'异常'}});
 				},
 			)
 			.catch(e => {
-				// isToast && store.dispatch(setToast('异常'));
+				isToast && store.dispatch({type:'global/setToast', params:{msg:'异常'}});
 			});
 	});
 	return __promise;

@@ -37,7 +37,7 @@ const ArticleList = ({articleList, isMore, isShowMore=true, isMobile, onLoadMore
         <div className={style["article-list"]} >
             {
                 articleList.map(item=>(
-                    <div className={(!!item.poster && !isMobile) ?  `${style.item} has-right` : style.item} onClick={()=>goUrl(`/article/detail/${item._id}`)}  key={item._id}>
+                    <div className={(!!item.poster && !isMobile) ?  `${style.item} ${style['has-right']}` : style.item} onClick={()=>goUrl(`/article/detail/${item._id}`)}  key={item._id}>
                         <div className={style["left"]}>
                             <div className={style["title"]}>
                                 <h4 className="color-black">{item.title}</h4>

@@ -40,6 +40,17 @@ export default {
     },
     effects: {
 
+    	//loading状态
+    	* setLoading({ params:{isLoading} }:{params:any}, { put, call }:any) {
+            yield put({type:'setState', payload:{isLoading}});
+        },
+
+        //提示状态
+    	* setToast({ params:{msg} }:{params:any}, { put, call }:any) {
+            yield put({type:'setState', payload:{msg}});
+        },
+
+
         *setMobile({ params }:{params:any}, { put, call }:any) {
             yield put({type:'setState', payload:{isMobile:$$.isMobile()}})
         },
@@ -49,6 +60,8 @@ export default {
             let { iShowMenu } = yield select((state:any)=>state.global);
             yield put({type:'setState', payload:{iShowMenu:!iShowMenu}});
         }
+
+
     },
     reducers: {
         setState(state: GlobalModelState, { payload }:any): GlobalModelState {

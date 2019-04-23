@@ -13,9 +13,9 @@ export default class Gotop extends React.Component<any>{
         this.el!.temp = ()=>{
         	nScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 	        if (nScrollTop > SHOW_TOP_DISTANT) {
-	        	this.el!.className=`${style['go-top-btn']} ${style['show']}`;
+	        	this.el && (this.el!.className=`${style['go-top-btn']} ${style['show']}`);
 	        } else {
-	        	this.el!.className=style['go-top-btn'];
+	        	this.el && (this.el!.className=style['go-top-btn']);
 	        }
         }
         this.el!.temp();
