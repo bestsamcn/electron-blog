@@ -1,6 +1,5 @@
 import React from 'react';
 import style from './style.less';
-console.log(style, 'dddddddddd')
 
 const Loading = ({isLoading}:{isLoading:boolean})=>{
     return (

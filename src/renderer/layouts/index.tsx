@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Footer, Menu, Loading, Toast, Gotop } from '@/components/layouts';
+import { Header, Menu, Loading, Toast, Gotop } from '@/components/layouts';
 import { connect } from 'dva';
 import { withRouter } from 'umi';
 import { GlobalModelState } from '@/models/global';
@@ -80,7 +80,6 @@ export default class BaseLayout extends React.Component<IProps, any> {
 	    		<div className="router-view">
 	                {this.props.children}
 	            </div>
-	            <Footer />
 	    	</div>
 	    )
 	}

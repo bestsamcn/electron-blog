@@ -17,7 +17,8 @@
     "pack": "npm run build && npm run rebuild && build",
     "pack:dir": "npm run build && npm run rebuild && build --dir",
     "pack:dirOnly": "build --dir",
-    "rebuild": "electron-rebuild -m ./app"
+    "rebuild": "electron-rebuild -m ./app",
+    "push":"git add . && git commit -m --text"
   },
   "dependencies": {
     "antd": "^3.15.0",

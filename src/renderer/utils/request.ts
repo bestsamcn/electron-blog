@@ -16,6 +16,7 @@ export class ResponseBody {
 	retCode: number = 0;
 	data: any;
 	msg: string = '请求成功';
+	total?:number
 }
 
 interface HeaderObj {
@@ -23,6 +24,7 @@ interface HeaderObj {
 	url: string;
 	params?: any;
 	data?: any;
+
 }
 
 /**

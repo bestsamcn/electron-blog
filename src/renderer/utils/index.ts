@@ -78,7 +78,7 @@ export default class Tool {
      * @param  {any}   json 运动参数
      * @param  {function} fn   回调
      */
-    static moveStart = (obj:any, json:any, fn:Function)=>{
+    static moveStart = (obj:any, json:any, fn?:Function)=>{
         var that = Tool;
         clearInterval(obj.timer);
         obj.timer = setInterval(function() {
@@ -590,7 +590,7 @@ export default class Tool {
         var b = 0;
         //不能放在scroll时间里，否则无滚动，不能点击
         if(obj !== 'undefined'){
-            obj.addEventListener('click',function(){
+            obj!.addEventListener('click',function(){
                 clearInterval(iTimer);
                 runFn(iTarget);
             });
@@ -604,7 +604,7 @@ export default class Tool {
         function runFn(iTarget:any) {
             clearInterval(iTimer);
             var iSpeed = 0 ;
-            iCur = 0;
+            var iCur = 0;
             iTimer = setInterval(function() {
                 iCur = document.documentElement.scrollTop || document.body.scrollTop;
                 //一直没想到会是这步的原因,由于放向的不同,取值会不同,ceil是为了向下滚动,为正数,floor是为了向上滚动,为负数
