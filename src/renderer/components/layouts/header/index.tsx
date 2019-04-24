@@ -1,6 +1,7 @@
 import React from 'react';
-import { NavLink } from 'umi';
+import { NavLink, withRouter } from 'umi';
 import { connect } from 'dva';
+
 import style from './style.less';
 interface IProps{
 	isLogin:boolean,
@@ -8,6 +9,7 @@ interface IProps{
 	iShowMenu:boolean
 }
 
+@(withRouter as any)
 @connect(({global}:any)=>({...global}))
 class Header extends React.Component<any> {
     setToggleMenu(){
@@ -28,7 +30,6 @@ class Header extends React.Component<any> {
                     <NavLink isActive={this.isActive.bind(this)} to="/search" exact activeClassName={style.active}>搜索</NavLink>
                     <NavLink isActive={this.isActive.bind(this)} to="/about" exact activeClassName={style.active}>关于</NavLink>
                     <NavLink isActive={this.isActive.bind(this)} to="/message" exact activeClassName={style.active}>留言</NavLink>
-                    <NavLink isActive={this.isActive.bind(this)} to={isLogin ? '/admin/home' : '/admin/signin'} exact activeClassName={style.active}>{isLogin ? '管理' : '登录'}</NavLink>
                 </div>
                 <div className={`${style['menu-btn']} md-hide`}>
                     <a href="javascript:;" onClick={this.setToggleMenu.bind(this)}  className={iShowMenu ? `icon-reorder ${style.on}` : 'icon-reorder' }></a>

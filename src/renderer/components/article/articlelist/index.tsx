@@ -10,10 +10,11 @@ interface IProps{
 	isMore:boolean,
 	isShowMore:boolean,
 	isMobile:boolean,
-	onLoadMore:(e:any)=>void
+	onLoadMore:(e:any)=>void,
+    className?:string
 }
 
-const ArticleList = ({articleList, isMore, isShowMore=true, isMobile, onLoadMore}:IProps)=>{
+const ArticleList = ({articleList, isMore, isShowMore=true, isMobile, onLoadMore, className}:IProps)=>{
 
     //指令真难搞
     let autoSize = (e:any)=>{
@@ -34,7 +35,7 @@ const ArticleList = ({articleList, isMore, isShowMore=true, isMobile, onLoadMore
         router.push(url);
     }
     return (
-        <div className={style["article-list"]} >
+        <div className={className ? `${style["article-list"]} ${className}` : style["article-list"]}>
             {
                 articleList.map(item=>(
                     <div className={(!!item.poster && !isMobile) ?  `${style.item} ${style['has-right']}` : style.item} onClick={()=>goUrl(`/article/detail/${item._id}`)}  key={item._id}>
@@ -45,12 +46,11 @@ const ArticleList = ({articleList, isMore, isShowMore=true, isMobile, onLoadMore
                                     <span className="icon-comment">{item.commentNum } Comments</span>
                                     <span className="icon-eye-open">{item.readNum} Views</span>
                                     <span className="icon-tag">{item.tag ? item.tag.name : 'null'}</span>
-                                    <a href="javascript:;" className={ item.isLiked ? `icon-heart style.active` : 'icon-heart'}>{item.likeNum}</a>
+                                    <a href="javascript:;" className={ item.isLiked ? `icon-heart ${style.active}` : 'icon-heart'}>{item.likeNum}</a>
                                 </div>
                             </div>
                             <p className={style["preview"]}>
                                 摘要: {item.previewText}
-
                             </p>
                             <div className={style["bottom"]}>
                                 <a href="javascript:;" className={style["more"]}>{item.category ? item.category.name :'我可能被删了'}</a>

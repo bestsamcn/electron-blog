@@ -3,6 +3,7 @@ declare module 'electron';
 declare module 'electron-is';
 declare module 'electron-log';
 declare module 'umi-types';
+declare var console:Console;
 
 declare module NodeJS  {
     interface Global {

@@ -1,4 +1,4 @@
-import electron, { app, BrowserWindow } from 'electron';
+import electron, { app, BrowserWindow, screen } from 'electron';
 import { join } from 'path';
 import is from 'electron-is';
 import log from 'electron-log';
@@ -7,6 +7,10 @@ import * as window from './services/window';
 import * as menu from './services/menu';
 import * as config from './configs/config';
 import path from 'path';
+
+// app.commandLine.appendSwitch('high-dpi-support', 1)
+// app.commandLine.appendSwitch('force-device-scale-factor', 1)
+
 
 declare module NodeJS  {
     interface Global {
@@ -22,14 +26,14 @@ if (is.dev()) {
 
     //自动刷新主线程
     require('electron-reload')(process.cwd()+'/app', { 
-    	electron: path.join(process.cwd(), 'node_modules', '.bin', 'electron.cmd'),
-    	hardResetMethod: 'exit'
+    	electron: path.join(process.cwd(), 'node_modules', '.bin', 'electron.cmd')
     }); // eslint-disable-line global-require
 }
 app.on('ready', () => {
     log.info('(main ready');
     application.init();
     menu.init();
+    
 });
 
 app.on('window-all-closed', () => {

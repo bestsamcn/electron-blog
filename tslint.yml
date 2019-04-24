@@ -5,7 +5,7 @@ extends:
 jsRules:
 rules:
     eofline: true
-    no-console: flase
+    no-console: false
     no-construct: true
     no-debugger: true
     no-reference: true

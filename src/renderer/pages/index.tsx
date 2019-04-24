@@ -12,6 +12,8 @@ import { connect } from 'dva';
 import { router } from 'umi';
 import style from './style.less';
 
+
+
 interface IProps{
 	articleList:any[],
     pageIndex:number,
@@ -35,6 +37,7 @@ export default class Home extends React.Component<IProps, {}> {
 
         // return
         el.slideBar = ()=>{
+            
             //滚动的极限距离
             var h:any = parseInt(_pNode.offsetHeight) - parseInt(el.offsetHeight)-20;
             var mainOffsetTop = parseInt(_pNode.offseTop);
@@ -83,7 +86,7 @@ export default class Home extends React.Component<IProps, {}> {
             isFromHome:true
         }
         obj[type] = name;
-        // this.props.setArticleParams(obj)
+        this.props.dispatch({type:'global/setState', payload:{articleParams:{...obj}}});
         setTimeout(()=>{
             router.push('/article');
         })

@@ -408,8 +408,7 @@ export default class Tool {
          */
         return {
             init: function(canvasID:any) {
-
-                let canvas:HTMLCanvasElement = document.getElementById(canvasID) || canvasID;
+                canvas=  canvasID;
                 // make sure canvas exists and that the browser understands it
                 if (canvas === null || !canvas.getContext) {
                     return;
@@ -637,11 +636,12 @@ class Particle {
     velocityX = Math.floor(Math.random() * 10) - 10;
     velocityY = Math.floor(Math.random() * 10) - 10;
     inText = false;
-    constructor(canvas:HTMLCanvasElement){
+    constructor(canvas:any){
+        this.spread = canvas.height;
         this.px = (canvas.width / 2) + (Math.cos(this.range) * this.spread);
         this.py = (canvas.height / 2) + (Math.sin(this.range) * this.spread);
         this.origSize = this.size;
-        this.spread = canvas.height;
+        
     }
 }
 

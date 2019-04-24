@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'umi';
 import styles from './style.less';
 
-class Footer extends React.Component{
+class Footer extends React.Component<{className?:string}, any>{
     render(){
         return (
             <div className={`${styles.footer} margin-top-20`}>

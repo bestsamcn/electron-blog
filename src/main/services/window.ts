@@ -4,7 +4,7 @@ import { BrowserWindow } from 'electron';
 
 let count = 0;
 
-export function create(opts) {
+export function create(opts:any) {
   count += 1;
   let win = new BrowserWindow(opts);
   win.on('close', () => {
