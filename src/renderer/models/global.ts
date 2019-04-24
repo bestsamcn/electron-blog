@@ -59,6 +59,13 @@ export default {
         *setToggleMenu({ params }:{params:any}, { put, call, select }:any){
             let { iShowMenu } = yield select((state:any)=>state.global);
             yield put({type:'setState', payload:{iShowMenu:!iShowMenu}});
+        },
+
+        //设置文章参数
+        *setArticleParams({ params }:{params:any}, { put, call, select }:any){
+            let { category, tag, isFromHome } = params;
+            yield put({type:'setState', payload:{articleParams:{category, tag, isFromHome}}});
+            params.callback && params.callback();
         }
 
 

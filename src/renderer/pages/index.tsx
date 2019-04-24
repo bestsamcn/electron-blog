@@ -86,10 +86,12 @@ export default class Home extends React.Component<IProps, {}> {
             isFromHome:true
         }
         obj[type] = name;
-        this.props.dispatch({type:'global/setState', payload:{articleParams:{...obj}}});
-        setTimeout(()=>{
-            router.push('/article');
-        })
+        this.props.dispatch({type:'global/setArticleParams', params:{...obj, callback(){
+            setTimeout(()=>{
+                router.push('/article');
+            })
+        }}});
+        
     }
 
     getArticleList(){

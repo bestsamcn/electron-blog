@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import * as config from '../config';
-import MessageEnum from './msg.js';
+import MessageEnum from './msg';
 Axios.defaults.baseURL = config.ROOT_API;
 Axios.defaults.timeout = 10000;
 Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
@@ -91,7 +91,7 @@ const _http = (type: MethodType, url: string, params: any, isToast?: boolean): P
 							// store.dispatch('delToken');
 						}
 						console.log(res);
-						isToast && store.dispatch({type:'global/setToast', params:{msg:'异常'}});
+						isToast && store.dispatch({type:'global/setToast', params:{msg:MessageEnum[res.data.retCode] || '异常'}});
 						return false;
 					}
 					return resolve(res.data);

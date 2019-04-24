@@ -8,8 +8,8 @@ import style from './style.less';
 interface IProps{
 	articleList:any[],
 	isMore:boolean,
-	isShowMore:boolean,
-	isMobile:boolean,
+	isShowMore?:boolean,
+	isMobile?:boolean,
 	onLoadMore:(e:any)=>void,
     className?:string
 }
