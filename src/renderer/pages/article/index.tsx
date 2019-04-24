@@ -1,3 +1,6 @@
+/**
+ * 文章列表
+ */
 import React from 'react';
 import { connect } from 'dva';
 import ArticleList from '@/components/article/articlelist';
@@ -43,11 +46,10 @@ export default class Article extends React.Component<any>{
             let _category = this.props.global.articleParams.category;
             let _isMore = true;
             let _pageIndex = 1;
-            this.props.dispatch({type:'setParams', params:{tag:_tag, category:_category, isMore:true, pageIndex:_pageIndex, callback:()=>{
+            this.props.dispatch({type:'article/setParams', params:{tag:_tag, category:_category, isMore:true, pageIndex:_pageIndex, callback:()=>{
                 this.props.dispatch({type:'global/setState', payload:{articleParams:{isFromHome:false, tag:'', category:''}}});
                 this.getList(true);
             }}});
-
         }
 	}
 	componentWillReceiveProps(){

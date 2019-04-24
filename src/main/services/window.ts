@@ -6,7 +6,7 @@ let count = 0;
 
 export function create(opts:any) {
   count += 1;
-  let win = new BrowserWindow(opts);
+  let win:any = new BrowserWindow(opts);
   win.on('close', () => {
     count -= 1;
     win = null;

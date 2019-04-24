@@ -33,7 +33,7 @@ export default class Tool {
      * @param {string} v 值
      * @param {number} d 天数
      */
-    static setCookie = function(k:string, v:string, d:number) {
+    static setCookie = function(k:string, v:string|boolean, d:number) {
         var expire = '';
         if (d) {
             var date = new Date();

@@ -8,8 +8,8 @@ import * as menu from './services/menu';
 import * as config from './configs/config';
 import path from 'path';
 
-// app.commandLine.appendSwitch('high-dpi-support', 1)
-// app.commandLine.appendSwitch('force-device-scale-factor', 1)
+app.commandLine.appendSwitch('high-dpi-support', '1');
+app.commandLine.appendSwitch('force-device-scale-factor', '1');
 
 
 declare module NodeJS  {

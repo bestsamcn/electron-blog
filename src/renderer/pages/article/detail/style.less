@@ -1,0 +1,136 @@
+.article-detail {
+	width: 100%;
+	.main {
+		max-width: 1000px;
+		margin: 0 auto;
+		background: #fff;
+		padding: 10px;
+		@media screen and (min-width: 768px) {
+			padding: 20px;
+		}
+		.title {
+			width: 100%;
+			h4 {
+				font-size: 20px;
+				text-align: left;
+				margin: 10px 0 0 0;
+				margin-top: 0;
+				@media screen and (min-width: 768px) {
+					font-size: 22px;
+				}
+			}
+			.tags {
+			}
+			.info {
+				overflow: hidden;
+				margin: 10px 0 10px 0;
+				@media screen and (max-width: 768px) {
+					margin-top: 0;
+				}
+				span {
+					float: left;
+					margin-right: 20px;
+					color: #bbb;
+					font-size: 12px;
+					&:before {
+						margin-right: 5px;
+					}
+					@media screen and (max-width: 768px) {
+						float: left;
+						margin-right: 20px;
+						color: #bbb;
+						font-size: 12px;
+						margin-top: 10px;
+					}
+				}
+				a {
+					float: right;
+					color: #bbb;
+					font-size: 12px;
+					&:global {
+						&.icon-heart {
+							&.active {
+								color: #e24c3c;
+							}
+							&:before {
+								margin-right: 5px;
+							}
+						}
+
+						&.icon-heart-empty {
+							&:before {
+								margin-right: 5px;
+							}
+						}
+					}
+					&.active {
+						margin-right: 5px;
+					}
+				}
+			}
+		}
+		.preview {
+			text-align: left;
+			color: #999;
+			line-height: 22px;
+			margin-top: 10px;
+			background: #f6f8fa;
+			position: relative;
+			padding: 10px;
+			text-align: justify;
+			margin-bottom: 10px;
+			border-radius: 2px;
+			&:before {
+				width: 4px;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				content: '';
+				display: block;
+				background: #1abc9c;
+			}
+		}
+		.img {
+			width: 100%;
+			overflow: hidden;
+			background: #f6f6f6;
+			img {
+				width: 100%;
+			}
+		}
+		.others {
+			display: -webkit-flex;
+			display: flex;
+			margin: 30px auto;
+			justify-content: space-between;
+			a {
+				width: 20%;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				border-radius: 30px;
+				color: #2b4356;
+				border: 1px solid #2b4356;
+				&.is-liked {
+					background: #2b4356;
+					color: #fff;
+				}
+			}
+		}
+		:global {
+			.markdown-body p {
+				font-size: 16px !important;
+				line-height: 1.5em;
+			}
+			.content p,
+			.content p strong,
+			.content li {
+				font-size: 16px !important;
+			}
+			.markdown-body > *:first-child {
+				margin-top: 20px !important;
+			}
+		}
+	}
+}

@@ -31,13 +31,13 @@ export default class Home extends React.Component<IProps, {}> {
 	scrollBarRef:any;
     scrollBar(){
         if(this.props.isMobile) return;
-        var _body:any = document.body;
+        var _body:any = document.documentElement;
         var el:any = this.scrollBarRef;
         var _pNode = el!.parentNode;
 
         // return
         el.slideBar = ()=>{
-            
+
             //滚动的极限距离
             var h:any = parseInt(_pNode.offsetHeight) - parseInt(el.offsetHeight)-20;
             var mainOffsetTop = parseInt(_pNode.offseTop);

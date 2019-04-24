@@ -48,6 +48,9 @@ export default {
         //提示状态
     	* setToast({ params:{msg} }:{params:any}, { put, call }:any) {
             yield put({type:'setState', payload:{msg}});
+            setTimeout(()=>{
+            	window.g_app._store.dispatch({type:'global/setToast', params:{msg:''}});
+            }, 2000)
         },
 
 
