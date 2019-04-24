@@ -23,8 +23,8 @@ export default {
 
     	//回车
     	* onKeywordEnter({ params }:{params:{keyword:string, isMore:boolean}}, { put, call, select }:any) {
-    		yield put({type:'setState', payload:{keyword:params.keyword}});
-    		yield put({type:'getSearchList', params:{isRefresh:true, isMore:true}});
+    		yield put({type:'setState', payload:{keyword:params.keyword, isMore:true}});
+    		yield put({type:'getSearchList', params:{isRefresh:true}});
     	},
 
         //文章列表
@@ -32,7 +32,6 @@ export default {
 
         	let { isMore, pageIndex, pageSize, keyword, articleList } = yield select((state:any)=>state.search);
         	let { isRefresh } = params;
-        	isMore = isMore || params.isMore;
         	if(!isMore) return;
 	        var obj = {
 	            pageIndex:isRefresh ? 1 : pageIndex,
@@ -57,7 +56,7 @@ export default {
             	yield put({type:'setState', payload:{isMore:false}});
             }else{
                 let _pageIndex = pageIndex + 1;
-                yield put({type:'setState', payload:{pageIndex:_pageIndex, isMore:false}});
+                yield put({type:'setState', payload:{pageIndex:_pageIndex, isMore:true}});
             }
             yield put({type:'setState', payload:{isFirst:false}});
         }

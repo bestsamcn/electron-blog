@@ -30,7 +30,7 @@ export default class Search extends React.Component<any>{
         return false;
     }
     componentWillMount() {
-        if(this.props.hotWord && this.props.hotWord.isFromHotWord && this.props.hotWord.name){
+        if(this.props.hotWord && this.props.hotWord.isFromHotWord && this.props.hotWord.name){	
             this.setState({keyword: this.props.hotWord.name}, ()=>{
                 if(!this.state.isCache) this.getSearchList(true);
             });
