@@ -4,7 +4,17 @@ import MessageEnum from './msg';
 Axios.defaults.baseURL = config.ROOT_API;
 Axios.defaults.timeout = 10000;
 Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+
 Axios.defaults.withCredentials = true;
+
+
+//window挂在自定义属性
+declare global {
+  interface Window {
+    g_app: any
+  }
+}
+
 
 const store = window.g_app._store;
 
@@ -16,7 +26,7 @@ export enum MethodType {
 
 export class ResponseBody {
 	retCode: number = 0;
-	data: any;
+	data: any|never;
 	msg: string = '请求成功';
 	total?:number
 }

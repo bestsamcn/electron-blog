@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import $$ from '@/utils';
 import Helper from '@/utils/filter';
 // import Footerbar from '../../components/common/Footer';
-// import Comment from '../../components/article/Comment';
+import Comment from '@/components/article/comment';
 import '@/assets/style/dark.less';
 import '@/assets/style/markdown.less';
 import style from './style.less';
@@ -26,7 +26,7 @@ export default class Detail extends React.Component<any>{
        	this.props.dispatch({type:'articleDetail/likeArticle', params:{id:article._id}});
     }
 	render(){
-		const { article, isLiked, prevID, nextID } = this.props;
+		const { article, isLiked, prevID, nextID, match } = this.props;
 		return (
 			<div className={style["article-detail"]}>
 		        <div className={style["main"]}>
@@ -54,7 +54,7 @@ export default class Detail extends React.Component<any>{
 		                {nextID && <Link to={`/article/detail/${nextID}`}>后篇</Link>}
 		                <a href="javascript:;" onClick={this.likeClick.bind(this)} className={isLiked && style['is-liked'] || ''}>点赞</a>
 		            </div>
-		            {/*<Comment className="margin-top-30" article={this.props.params.id} />*/}
+		            <Comment className="margin-top-30" article={match.params.id} />
 		        </div>
 		        <Footer/>
 		    </div>

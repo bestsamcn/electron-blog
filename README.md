@@ -6,11 +6,11 @@ Electron-blog是利用electron, umi, dva, typescript等技术开发的桌面端�
 
 
 
-1. 全局安装electron
+1. 全局安装electron和electromon
 	```
-	npm install electron -g
+	npm install electron electromon -g
 	```
-	若是全局安装后，找不到模块，可以使用`npm link electron`映射
+	若是全局安装后，找不到模块，可以使用`npm link electron`映射, 一个问题electron全局安装，可能出现某些接口异常
 
 2. 根目录安装依赖
 	```

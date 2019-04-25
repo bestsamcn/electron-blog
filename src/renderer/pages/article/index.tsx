@@ -7,8 +7,9 @@ import ArticleList from '@/components/article/articlelist';
 import { Footer } from '@/components/layouts';
 import $$ from '@/utils';
 import style from './style.less';
+import { withRouter } from 'umi';
 
-
+@(withRouter as any)
 @connect(({article, global}:any)=>({...article, global}))
 export default class Article extends React.Component<any>{
 	getList(isRefresh=false){

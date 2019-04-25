@@ -12,3 +12,4 @@ declare module "*.json" {
 declare module 'react-addons-css-transition-group';
 declare module 'umi-types';
 declare module 'xss';
+
