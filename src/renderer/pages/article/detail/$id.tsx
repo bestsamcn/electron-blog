@@ -45,7 +45,7 @@ export default class Detail extends Base<any>{
 		                    {
 		                    	!!article.lastEditTime && !this.props.isMobile && <span className="icon-edit">{Helper.dateFormat(article.lastEditTime, 'yyyy-MM-dd hh:mm:ss')}</span>
 		                    }
-		                    <a href="javascript:;" onClick={this.likeClick.bind(this)} className={isLiked ? `icon-heart ${style.active}` : 'icon-heart'}>{Helper.transNum(article.likeNum) }</a>
+		                    <a href="javascript:;" onClick={this.likeClick.bind(this)} className={isLiked ? `active icon-heart` : 'icon-heart'}>{Helper.transNum(article.likeNum) }</a>
 		                </div>
 		            </div>
 		            <p className={style["preview"]}>

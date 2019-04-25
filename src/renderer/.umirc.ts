@@ -9,7 +9,7 @@ const config: IConfig = {
 	publicPath: './',
 	outputPath: '../../app/dist/renderer',
 	treeShaking: true,
-	history: 'browser',
+	history: 'hash',
 	plugins: [
 		[
 			'umi-plugin-react',
@@ -31,10 +31,6 @@ const config: IConfig = {
 			},
 		],
 	],
-	uglifyJSOptions:{
-		drop_debugger: false, 
-        drop_console: false  
-	},
 	externals(context, request, callback) {
 		const isDev = process.env.NODE_ENV === 'development';
 		let isExternal: boolean | string = false;

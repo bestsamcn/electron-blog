@@ -1,5 +1,5 @@
 import { ResponseBody } from '@/utils/request';
-import { getArticleDetail } from '@/services';
+import { getArticleDetail, likeArticle } from '@/services';
 import $$ from '@/utils';
 
 
@@ -43,6 +43,7 @@ export default {
         //点赞
         *likeArticle({ params }:{params:any}, { put, call, select }:any) {
         	let { article } = yield select((state:any)=>state.articleDetail);
+            yield call(likeArticle, {id:article._id});
         	$$.setCookie(article._id, true, 7);
             let _likeNum = article.likeNum+1;
             yield put({type:'setState', payload:{isLiked:true, article:{...article, likeNum: _likeNum}}});
