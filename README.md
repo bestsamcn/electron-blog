@@ -7,11 +7,9 @@ Electron-Blog 是一个基于``electron+umi+dva+typescript``等技术开发的�
 
 ### 环境
 
-
-
-1. 全局安装electron和electromon
+1. 全局安装electron(或许在项目中安装比较好)
 	```
-	npm install electron electromon -g
+	npm install electron -g
 	```
 	若是全局安装后，找不到模块，可以使用`npm link electron`映射, 一个问题electron全局安装，可能出现某些接口异常
 
