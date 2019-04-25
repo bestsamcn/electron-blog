@@ -5,6 +5,8 @@ Electron-Blog 是一个基于``electron+umi+dva+typescript``等技术开发的�
 
 - 后端接口利用 ``express + mongodb + redis`` 开发，后端地址[请点我](https://github.com/bestsamcn/node-blog)
 
+![default](https://github.com/bestsamcn/electron-blog/blob/master/screenshots/preview.png)
+
 ### 环境
 
 1. 全局安装electron(或许在项目中安装比较好)
