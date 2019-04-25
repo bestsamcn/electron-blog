@@ -53,6 +53,7 @@ const ArticleList = ({articleList, isMore, isShowMore=true, isMobile, onLoadMore
                                 摘要: {item.previewText}
                             </p>
                             <div className={style["bottom"]}>
+                                {item.isTop && <a href="javascript:;" className={`${style["more"]} border-red color-red margin-right-5`}>置顶</a>}
                                 <a href="javascript:;" className={style["more"]}>{item.category ? item.category.name :'我可能被删了'}</a>
                                 <a className={`icon-calendar ${style.more} no-border color-gray`}>{Helper.dateFormat(item.createTime, 'yyyy-MM-dd')}</a>
                                 {item.lastEditTime && <a className={`icon-edit ${style.more} no-border color-gray`}>{Helper.dateFormat(item.lastEditTime, 'yyyy-MM-dd')}</a>}

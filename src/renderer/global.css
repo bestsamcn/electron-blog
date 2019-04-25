@@ -96,7 +96,7 @@ select {
 	color: #2b4356;
 }
 .color-red {
-	color: #e24c3c;
+	color: #e24c3c !important;
 }
 .color-white {
 	color: #fff;
@@ -133,6 +133,9 @@ select {
 }
 .margin-left-10 {
 	margin-left: 10px;
+}
+.margin-right-5{
+	margin-right:5px;
 }
 .margin-top-10 {
 	margin-top: 10px;
@@ -186,6 +189,9 @@ select {
 	padding: 10px !important;
 }
 .all-hide {
+}
+.border-red{
+	border:1px solid #e24c3c !important;
 }
 .no-border {
 	border: none !important;

@@ -7,7 +7,8 @@ import $$ from '@/utils';
  */
 enum ArticleType{
     CATEGORY = 1,
-    TAG = 2
+    TAG = 2,
+    TOP = 4
 }
 
 //排名类型
@@ -50,7 +51,7 @@ export default {
         	let { pageIndex, pageSize, articleList } = yield select((state:any)=>state.home);
         	let { isRefresh } = params;
             let res: ResponseBody;
-            res = yield call(getArticleList, {pageIndex, pageSize});
+            res = yield call(getArticleList, {pageIndex, pageSize, type:ArticleType.TOP});
 
             res.data.map((item:any)=>{
                 if($$.getCookie(item._id)){
