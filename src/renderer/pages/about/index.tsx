@@ -1,9 +1,15 @@
+/**
+ * title:关于
+ * routerName:about
+ */
+
 import React from 'react';
+import Base from '@/components/Base';
 import Clock from '@/components/about/Clock';
 import style from './style.less';
 
 
-class About extends React.Component{
+class About extends Base{
     render(){
         return(
             <div className={style["about"]} >

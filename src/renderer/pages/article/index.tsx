@@ -1,5 +1,6 @@
 /**
- * 文章列表
+ * title:文章
+ * routerName:article
  */
 import React from 'react';
 import { connect } from 'dva';
@@ -8,10 +9,11 @@ import { Footer } from '@/components/layouts';
 import $$ from '@/utils';
 import style from './style.less';
 import { withRouter } from 'umi';
+import Base from '@/components/Base';
 
 @(withRouter as any)
 @connect(({article, global}:any)=>({...article, global}))
-export default class Article extends React.Component<any>{
+export default class Article extends Base<any>{
 	getList(isRefresh=false){
         this.props.dispatch({type:'article/getArticleList', params:{isRefresh}});
     }

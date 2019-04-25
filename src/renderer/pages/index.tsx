@@ -1,8 +1,10 @@
 /**
  * title: 首页
+ * routerName: home
  */
 import { remote } from 'electron';
 import React from 'react';
+import Base from '@/components/Base';
 import { Footer } from '@/components/layouts';
 import ArticleList from '@/components/article/articlelist';
 import { Category, Rank, Tag } from '@/components/home';
@@ -27,7 +29,7 @@ interface IProps{
 }
 
 @connect(({home, global}:any)=>({...home, global}))
-export default class Home extends React.Component<IProps, {}> {
+export default class Home extends Base<IProps, {}> {
 	scrollBarRef:any;
     scrollBar(){
         if(this.props.isMobile) return;
@@ -74,6 +76,7 @@ export default class Home extends React.Component<IProps, {}> {
     }
 
     componentDidMount(){
+        super.componentDidMount();
         this.scrollBar();
     }
     goArticleClick(name:string, type:string){

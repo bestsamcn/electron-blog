@@ -1,5 +1,6 @@
 /**
- * 搜索
+ * title:搜索
+ * routerName:search
  */
 import React from 'react';
 import { Footer } from '@/components/layouts';
@@ -8,10 +9,11 @@ import { connect } from 'dva';
 import { Link } from 'umi';
 import ArticleList from '@/components/article/articlelist';
 import style from './style.less';
+import Base from '@/components/Base'
 
 
 @connect(({search, global}:any)=>({...search, global}))
-export default class Search extends React.Component<any>{
+export default class Search extends Base<any>{
 	readonly state = {
         isCache:false,
         keyword:''

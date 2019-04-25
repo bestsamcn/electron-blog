@@ -70,15 +70,15 @@ export default class Comment extends React.Component<IProps, IState>{
 	}
 	async postClick(){
 	    if(!this.state.name){
-	        this.props.dispatch({type:'setToast', params:{msg:'请先填写用户名'}});
+	        this.props.dispatch!({type:'global/setToast', params:{msg:'请先填写用户名'}});
 	        return;
 	    }
 	    if(!this.state.email){
-	        this.props.dispatch({type:'setToast', params:{msg:'请先填写邮箱'}});
+	        this.props.dispatch!({type:'global/setToast', params:{msg:'请先填写邮箱'}});
 	        return;
 	    }
 	    if(!this.state.content.replace(/^\s+|\s+$/,'')){
-	        this.props.dispatch({type:'setToast', params:{msg:'填写内容'}});
+	        this.props.dispatch!({type:'global/setToast', params:{msg:'填写内容'}});
 	        this.setState({content:''});
 	        return;
 	    }
@@ -118,11 +118,11 @@ export default class Comment extends React.Component<IProps, IState>{
 	}
 	saveInfo(_this:any){
 	    if(!_this.state.name){
-	        _this.props.dispatch({type:'setToast', params:{msg:'请先填写用户名'}});
+	        _this.props.dispatch({type:'global/setToast', params:{msg:'请先填写用户名'}});
 	        return;
 	    }
 	    if(!_this.state.email){
-	        _this.props.dispatch({type:'setToast', params:{msg:'请先填写邮箱'}});
+	        _this.props.dispatch({type:'global/setToast', params:{msg:'请先填写邮箱'}});
 	        return;
 	    }
 	    window.localStorage['__postName__'] = _this.state.name;
@@ -150,7 +150,7 @@ export default class Comment extends React.Component<IProps, IState>{
 	}
 	likeClick(isLike:boolean, item:any){
 	    if(!!$$.getCookie(item._id+'__setLikeComment__')){
-	        return this.props.dispatch({type:'setToast', params:{msg:'你已投票，明天再来吧'}});
+	        return this.props.dispatch!({type:'global/setToast', params:{msg:'你已投票，明天再来吧'}});
 	    };
 	    var obj = {
 	        id:item._id,
@@ -170,7 +170,7 @@ export default class Comment extends React.Component<IProps, IState>{
 	    // this.content = '@'+item.createLog.createName+': ';
 	    this.setState({reply:item});
 	    setTimeout(()=>{
-	        var replyName = document.getElementById('reply-name');
+	        var replyName = document.getElementById(style["reply-name"]);
 	        var messageContent = document.getElementById('message-content');
 	        this.setState({replyOffsetWidth:replyName!.offsetWidth-10});
 	        messageContent && messageContent.blur();
@@ -179,6 +179,7 @@ export default class Comment extends React.Component<IProps, IState>{
 	}
 	backSpace(e:any){
 	    if(this.state.content.replace(/^\s+|\s+$/,'').length == 0){
+
 	    	//this.state.backSpaceTimes++不行
 	    	let _backSpaceTimes = this.state.backSpaceTimes+1;
 	        this.setState({backSpaceTimes:_backSpaceTimes});
@@ -291,7 +292,7 @@ export default class Comment extends React.Component<IProps, IState>{
 				                    <a href="javascript:;" onClick={()=>this.likeClick(false, item)} className="icon-sort-down down"></a>
 				                </div>
 				                <div className={style["cont"]}>
-				                    <h4 className="title text-left">
+				                    <h4 className={`${style["title"]} text-left`}>
 				                        {(item as any).createLog.createName}：
 				                    </h4>
 
