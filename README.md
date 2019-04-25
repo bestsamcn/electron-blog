@@ -1,6 +1,9 @@
 # electron-blog
-Electron-blog是利用electron, umi, dva, typescript等技术开发的桌面端项目
 
+## 简介
+Electron-Blog 是一个基于``electron+umi+dva+typescript``等技术开发的桌面端项目,另有[Vue版本](https://github.com/bestsamcn/vue-blog), [Angualr版本](https://github.com/bestsamcn/angular-blog), [React版本](https://github.com/bestsamcn/react-blog)。
+
+- 后端接口利用 ``express + mongodb + redis`` 开发，后端地址[请点我](https://github.com/bestsamcn/node-blog)
 
 ### 环境
 
@@ -39,6 +42,12 @@ Electron-blog是利用electron, umi, dva, typescript等技术开发的桌面端�
 npm run pack
 ```
 
+## 预览
+- 项目总体完成，部分细节有待修改。
+- [请点击我](http://blog.bestsamcn.me/)预览vue版本
+- [请点击我](http://react.bestsamcn.me/)预览react版本
+- [请点击我](http://angular.bestsamcn.me/)预览angular版本
+- [请点击我](http://gulp.bestsamcn.me/)预览gulp自动化版本
 
 
 ### 最后

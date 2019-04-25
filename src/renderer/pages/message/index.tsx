@@ -1,6 +1,6 @@
 /**
- * title:留言
- * routerName:message
+ * title: 留言
+ * routerName: message
  */
 import React from 'react';
 import { connect } from 'dva';

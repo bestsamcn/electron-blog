@@ -1,6 +1,6 @@
 /**
- * title:404
- * routerName:404
+ * title: 404
+ * routerName: 404
  */
 import React from 'react';
 import { Link } from 'umi';

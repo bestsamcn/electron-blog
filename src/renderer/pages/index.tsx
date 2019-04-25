@@ -2,7 +2,6 @@
  * title: 首页
  * routerName: home
  */
-import { remote } from 'electron';
 import React from 'react';
 import Base from '@/components/Base';
 import { Footer } from '@/components/layouts';
@@ -33,7 +32,6 @@ export default class Home extends Base<IProps, {}> {
 	scrollBarRef:any;
     scrollBar(){
         if(this.props.isMobile) return;
-        var _body:any = document.documentElement;
         var el:any = this.scrollBarRef;
         var _pNode = el!.parentNode;
 
@@ -47,7 +45,8 @@ export default class Home extends Base<IProps, {}> {
             var slideBarHeight =  parseInt(el.offsetHeight) - 40 ;
             var slideBarIntOffsetTop = 20;
             var slideFunc = function() {
-                var scrollTop = parseInt(_body.scrollTop);
+
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
                 var slideBarOffsetTop = parseInt(el.offsetTop);
                 var slideBarTop  = parseInt(el.style.top) || 0;
 
@@ -61,7 +60,7 @@ export default class Home extends Base<IProps, {}> {
                 if (aniDistant > h) {
                     aniDistant = h
                 };
-                if (parseInt(_body.scrollTop) > slideBarIntOffsetTop ) {
+                if (scrollTop > slideBarIntOffsetTop ) {
                     $$.moveStart(el, {'top':aniDistant});
                 } else {
                     $$.moveStart(el, {'top':10});
@@ -76,7 +75,7 @@ export default class Home extends Base<IProps, {}> {
     }
 
     componentDidMount(){
-        super.componentDidMount();
+        // super.componentDidMount();
         this.scrollBar();
     }
     goArticleClick(name:string, type:string){

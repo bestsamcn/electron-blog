@@ -3,7 +3,7 @@ import { FACE_URL, PAGE_SIZE } from '@/config';
 import { connect } from 'dva';
 import * as API from '@/services';
 import Helper from '@/utils/filter';
-// import Emoji from './Emoji';
+import Emoji from '@/components/article/Emoji';
 import $$ from '@/utils';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import style from './style.less';
@@ -276,7 +276,7 @@ export default class Comment extends React.Component<IProps, IState>{
 		                        transitionLeaveTimeout={200}
 		                        transitionName="fadeInLeft"
 		                    >
-		                    {/*this.state.shouldShowFace && <Emoji onFaceClick={this.onFaceClick.bind(this)} />*/}
+		                    {this.state.shouldShowFace && <Emoji onFaceClick={this.onFaceClick.bind(this)} />}
 		                    </ReactCSSTransitionGroup>
 		                </li>
 		            </ul>

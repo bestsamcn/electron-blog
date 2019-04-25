@@ -53,8 +53,7 @@ app.on('quit', () => {
 });
 
 
-// Register to global, so renderer can access these with remote.getGlobal
-global.services = { //ts
+global.services = { 
     application,
     window,
 };

@@ -1,6 +1,6 @@
 /**
- * title:搜索
- * routerName:search
+ * title: 搜索
+ * routerName: search
  */
 import React from 'react';
 import { Footer } from '@/components/layouts';

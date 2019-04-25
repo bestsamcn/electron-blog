@@ -1,12 +1,13 @@
 /**
- * title:文章详情
- * routerName:articleDetail
+ * title: 文章详情
+ * routerName: articleDetail
  */
 import React from 'react';
 import { connect } from 'dva';
 import $$ from '@/utils';
 import Helper from '@/utils/filter';
 import Comment from '@/components/article/comment';
+
 import '@/assets/style/dark.less';
 import '@/assets/style/markdown.less';
 import style from './style.less';

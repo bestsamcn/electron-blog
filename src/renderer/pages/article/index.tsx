@@ -1,6 +1,6 @@
 /**
- * title:文章
- * routerName:article
+ * title: 文章
+ * routerName: article
  */
 import React from 'react';
 import { connect } from 'dva';
