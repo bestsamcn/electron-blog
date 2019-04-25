@@ -5,12 +5,11 @@ import path from 'path';
 export function init() {
 	let display = screen.getPrimaryDisplay(); //可以获取界面信息
 	const win = create({ 
-		width: 1000, 
+		width: 1300, 
 		height: 700, 
-		minWidth: 1000, 
+		minWidth: 1300, 
 		minHeight: 700, 
-		webPreferences: { zoomFactor: 1 } ,
-		icon: path.join(process.cwd(), 'build/icon.ico')
+		icon: path.join($dirname, 'icons', 'icon.ico')
 	});
 	win.loadURL(getPath());
 }
