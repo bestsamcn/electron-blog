@@ -14,15 +14,16 @@ const config: IConfig = {
 		[
 			'umi-plugin-react',
 			{
-				antd: true,
+				antd: false,
 				dva: true,
 				dynamicImport: {
 					webpackChunkName: true,
 				},
+				// dynamicImport:false,
 				title: 'electron-blog',
 				dll: true,
 				locale: {
-					enable: true,
+					enable: false,
 					default: 'en-US',
 				},
 				routes: {
@@ -34,7 +35,7 @@ const config: IConfig = {
 	externals(context, request, callback) {
 		const isDev = process.env.NODE_ENV === 'development';
 		let isExternal: boolean | string = false;
-		const load = ['electron', 'fs', 'path', 'os', 'url', 'child_process'];
+		const load = ['electron', 'electron-updater', 'fs', 'path', 'os', 'url', 'child_process'];
 
 		//浏览器预览会报错require not defined
 		if (load.includes(request)) {

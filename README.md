@@ -42,6 +42,9 @@ Electron-Blog 是一个基于``electron+umi+dva+typescript``等技术开发的�
 npm run pack
 ```
 
+## 说明
+生产环境下的依赖已全部迁移到app中，并且在.umirc.ts中已经作了处理
+
 ## 预览
 - 项目总体完成，部分细节有待修改。
 - [请点击我](http://blog.bestsamcn.me/)预览vue版本

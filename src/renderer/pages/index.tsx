@@ -45,7 +45,6 @@ export default class Home extends Base<IProps, {}> {
             var slideBarHeight =  parseInt(el.offsetHeight) - 40 ;
             var slideBarIntOffsetTop = 20;
             var slideFunc = function() {
-
                 var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
                 var slideBarOffsetTop = parseInt(el.offsetTop);
                 var slideBarTop  = parseInt(el.style.top) || 0;
@@ -67,7 +66,7 @@ export default class Home extends Base<IProps, {}> {
                 }
             }
             window.addEventListener('scroll', slideFunc);
-            document.addEventListener('resize', slideFunc);
+            window.addEventListener('resize', slideFunc);
         }
         setTimeout(()=>{
             el.slideBar()
@@ -76,7 +75,7 @@ export default class Home extends Base<IProps, {}> {
 
     componentDidMount(){
         // super.componentDidMount();
-        this.scrollBar();
+        setTimeout(()=>this.scrollBar(), 500);
     }
     goArticleClick(name:string, type:string){
     	interface Temp {

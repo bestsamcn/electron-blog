@@ -1,6 +1,7 @@
 import { Menu } from 'electron';
 import log from 'electron-log';
 
+
 function getTemplate() {
 	return [
 		{

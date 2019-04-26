@@ -1,9 +1,11 @@
 {
   "private": true,
-  "name": "electron-blog",
+  "version":"1.0.1",
+  "description":"use electron rebuild best blog",
+  "name": "best-blog",
   "scripts": {
-    "start:umi": "set APP_ROOT=src/renderer&&umi dev",
-    "build:umi": "set APP_ROOT=src/renderer&& umi build",
+    "start:umi": "set APP_ROOT=src/renderer && umi dev",
+    "build:umi": "set APP_ROOT=src/renderer && umi build",
     "test": "umi test",
     "lint:es": "eslint --ext .js src mock tests",
     "lint:ts": "tslint \"src/**/*.ts\" \"src/**/*.tsx\"",
@@ -30,6 +32,8 @@
     "xss": "^1.0.6"
   },
   "build": {
+    "copyright":"bestsamcn.me",
+    "productName":"best-blog",
     "files": [
       "./dist/**/*",
       "./pages/**/*",
