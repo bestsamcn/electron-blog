@@ -10,7 +10,7 @@ export default class Updator extends React.Component<any>{
 	render(){
 		return(
 			<div className={style.updator}>
-				
+				<span>提醒：</span>服务器有版本可供更新<a>马上升级</a>
 			</div>
 		)
 	}

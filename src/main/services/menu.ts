@@ -2,7 +2,7 @@ import { Menu } from 'electron';
 import log from 'electron-log';
 
 
-function getTemplate() {
+function getTemplate(updator?:any) {
 	return [
 		{
 			label: '返回',
@@ -22,12 +22,18 @@ function getTemplate() {
 			label: '刷新',
 			role: 'reload',
 		},
+		{
+			label: '更新',
+			click(){
+				updator!.doUpdate(false);
+			},
+		},
 	];
 }
 
-export function init() {
+export function init(updator?:any) {
 	log.info('(menu) init');
-	const menu = Menu.buildFromTemplate(getTemplate());
+	const menu = Menu.buildFromTemplate(getTemplate(updator));
 	Menu.setApplicationMenu(menu);
 	// Menu.setApplicationMenu(null);
 }

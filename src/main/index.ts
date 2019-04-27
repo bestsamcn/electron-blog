@@ -7,7 +7,7 @@ import * as window from './services/window';
 import * as menu from './services/menu';
 import * as config from './configs/config';
 import path from 'path';
-import { updator } from './services/updator';
+import { Updator } from './services/updator';
 
 app.commandLine.appendSwitch('high-dpi-support', '1');
 app.commandLine.appendSwitch('force-device-scale-factor', '1');
@@ -16,7 +16,8 @@ app.commandLine.appendSwitch('force-device-scale-factor', '1');
 declare module NodeJS  {
     interface Global {
         services: any,
-        configs:any
+        configs:any,
+        updator:any
     }
 }
 
@@ -32,9 +33,9 @@ if (is.dev()) {
 }
 app.on('ready', () => {
     log.info('(main ready');
-    application.init();
-    menu.init();
-    updator.doUpdate();
+    const win = application.init();
+    const updator = new Updator(win);
+    menu.init(updator);
     
 });
 
@@ -57,8 +58,7 @@ app.on('quit', () => {
 
 global.services = { 
     application,
-    window,
-    updator
+    window
 };
 global.configs = {
     config,

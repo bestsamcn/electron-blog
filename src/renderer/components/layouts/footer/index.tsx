@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'umi';
 import styles from './style.less';
+import { connect } from 'dva';
 
-class Footer extends React.Component<{className?:string}, any>{
+
+@connect(({global}:any)=>({...global}))
+class Footer extends React.Component<{className?:string, isUpdateAvailable:boolean}, any>{
     render(){
+    	const { isUpdateAvailable } = this.props;
         return (
-            <div className={`${styles.footer} margin-top-20`}>
+            <div className={ !isUpdateAvailable ? `${styles.footer} margin-top-20` : `${styles.footer} margin-top-20 ${styles['margin-bottom']}`}>
                 <div className={styles.webmap}>
                     <Link to="#/">首页</Link>
                     <Link to="">搜索</Link>

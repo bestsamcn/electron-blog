@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Menu, Loading, Toast, Gotop } from '@/components/layouts';
+import { Header, Menu, Loading, Toast, Gotop, Updator } from '@/components/layouts';
 import { connect } from 'dva';
 import { withRouter } from 'umi';
 import { GlobalModelState } from '@/models/global';
@@ -12,6 +12,7 @@ interface IProps{
 	token:string,
 	msg:string,
 	iShowMenu:boolean,
+	isUpdateAvailable:boolean,
 	routes:any[],
 	global:any
 }
@@ -48,7 +49,7 @@ export default class BaseLayout extends React.Component<IProps, any> {
         this.onresizeWindow();
     }
 	render(){
-		const { isLogin, token, msg, iShowMenu, isLoading } = this.props;
+		const { isLogin, token, msg, iShowMenu, isLoading, isUpdateAvailable } = this.props;
 
 		const { isResizeToMobile, routerName } = this.state;
 		return (
@@ -80,6 +81,7 @@ export default class BaseLayout extends React.Component<IProps, any> {
 	    		<div className="router-view">
 	                {this.props.children}
 	            </div>
+	            {isUpdateAvailable && <Updator />}
 	    	</div>
 	    )
 	}

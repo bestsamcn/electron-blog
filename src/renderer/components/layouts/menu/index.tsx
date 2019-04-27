@@ -7,7 +7,8 @@ import styles from './style.less';
 interface IProps{
 	isLogin?:boolean,
 	dispatch?:Function,
-	location:any
+	routerName?:string,
+	location?:any
 }
 
 @(withRouter as any)

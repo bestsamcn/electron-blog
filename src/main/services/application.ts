@@ -12,4 +12,5 @@ export function init() {
 		icon: path.join($dirname, 'icons', 'icon.ico')
 	});
 	win.loadURL(getPath());
+	return win;
 }

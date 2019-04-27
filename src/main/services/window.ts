@@ -1,6 +1,7 @@
 import is from 'electron-is';
 import { join } from 'path';
 import { BrowserWindow, shell } from 'electron';
+import { Updator } from './updator';
 
 let count = 0;
 
@@ -13,7 +14,7 @@ export function create(opts: any) {
     });
 
     //强制开启调试模式
-    // win.webContents.openDevTools({ mode: 'right' });
+    win.webContents.openDevTools({ mode: 'right' });
     return win;
 }
 
