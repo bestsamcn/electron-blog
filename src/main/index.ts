@@ -7,7 +7,7 @@ import * as window from './services/window';
 import * as menu from './services/menu';
 import * as config from './configs/config';
 import path from 'path';
-import { Updator } from './services/updator';
+import { updator } from './services/updator';
 
 app.commandLine.appendSwitch('high-dpi-support', '1');
 app.commandLine.appendSwitch('force-device-scale-factor', '1');
@@ -34,7 +34,7 @@ if (is.dev()) {
 app.on('ready', () => {
     log.info('(main ready');
     const win = application.init();
-    const updator = new Updator(win);
+    updator.win = win;
     menu.init(updator);
     
 });
