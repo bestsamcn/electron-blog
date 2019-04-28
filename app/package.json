@@ -1,6 +1,6 @@
 {
   "name": "best-blog",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "rebuild best-blog by electron",
   "main": "dist/main/main.js",
   "author": {

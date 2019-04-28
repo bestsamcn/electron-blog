@@ -1,4 +1,5 @@
-import { Menu } from 'electron';
+import { Menu, screen, BrowserWindow } from 'electron';
+import path from 'path';
 import log from 'electron-log';
 
 
@@ -26,6 +27,21 @@ function getTemplate(updator?:any) {
 			label: '更新',
 			click(){
 				updator!.doUpdate(false);
+			},
+		},
+		{
+			label: '新窗口',
+			click(){
+				let display = screen.getPrimaryDisplay(); //可以获取界面信息
+				const win =new BrowserWindow({ 
+					width: 1300, 
+					height: 700, 
+					minWidth: 1300, 
+					minHeight: 700, 
+					icon: path.join($dirname, 'icons', 'icon.ico')
+				});
+				win.loadURL('http://127.0.0.1:8000/');
+				return win;
 			},
 		},
 	];

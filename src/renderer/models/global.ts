@@ -3,6 +3,8 @@ import { getCategoryList } from '@/services';
 import $$ from '@/utils';
 import { ipcRenderer } from 'electron';
 
+let toastTimer:any = null;
+
 export interface GlobalModelState {
     token: string,
     msg: string,
@@ -74,7 +76,7 @@ export default {
     		});
 
     		ipcRenderer.on('updateDownloaded', (msg:any)=>{
-    			console.log(msg, 'onError')
+    			console.log(msg, 'updateDownloaded')
     			window.g_app._store.dispatch({type:"global/setToast", params:{msg:'更新完成，即将重启'}});
     			window.g_app._store.dispatch({type:"global/setState", payload:{isUpdateAvailable:false}});
     		});
@@ -86,11 +88,12 @@ export default {
         },
 
         //提示状态
-    	* setToast({ params:{msg} }:{params:any}, { put, call }:any) {
+    	* setToast({ params:{msg} }:{params:{msg:any}}, { put, call }:any) {
+            clearTimeout(toastTimer!);
+            toastTimer = setTimeout(()=>{
+            	window.g_app._store.dispatch({type:'global/setState', payload:{msg:''}});
+            }, 2000);
             yield put({type:'setState', payload:{msg}});
-            setTimeout(()=>{
-            	window.g_app._store.dispatch({type:'global/setToast', params:{msg:''}});
-            }, 2000)
         },
 
 

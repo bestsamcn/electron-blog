@@ -42,6 +42,10 @@
       "./pages/**/*",
       "./node_modules/**/*"
     ],
+    "publish":{
+      "provider":"generic",
+      "url":"http://10.0.1.143:4000/electron/"
+    },
     "appId": "me.bestsamcn",
     "win": {
       "icon": "build/icon.ico"

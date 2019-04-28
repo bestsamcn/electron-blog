@@ -1,7 +1,6 @@
 import is from 'electron-is';
 import { join } from 'path';
 import { BrowserWindow, shell } from 'electron';
-import { Updator } from './updator';
 
 let count = 0;
 
