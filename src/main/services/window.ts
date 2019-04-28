@@ -13,7 +13,7 @@ export function create(opts: any) {
     });
 
     //强制开启调试模式
-    win.webContents.openDevTools({ mode: 'right' });
+    // win.webContents.openDevTools({ mode: 'right' });
     return win;
 }
 
